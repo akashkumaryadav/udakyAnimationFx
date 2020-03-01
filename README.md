@@ -11,10 +11,13 @@
  2. **add to the library/class path of your project**
  3. **import ThreadedTransitions**
  4. **run as eg. for fadein**
-     1. ThreadedTransitions transition = new ThreadedTransition(Node:node,duration: time);
-     2.transition.fadein(from:0,to:10);
+     1. ThreadedTransitions transition = new ThreadedTransition(Node:node);
+     2.transition.fadein(from:0,to:10,duration:millis);
   5. **Hurray**
   
   > **Note** You also need JavafX sdk to work this only for Javafx applications
   > get javafxsdk https://gluonhq.com/products/javafx/[from here] add to the 
   
+  ## slidefromleft + fadein
+  
+![](https://github.com/akashkumaryadav/udakyAnimationFx/blob/master/out/img/slidein.gif)
