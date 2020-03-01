@@ -28,12 +28,11 @@ public class ThreadedTransitions {
      */
 
         private   Node _node;
-        private   Integer _time;
 
 
-        public ThreadedTransitions(Node node,Integer duration){
+        public ThreadedTransitions(Node node){
             this._node = node;
-            this._time = duration;
+
         }
 
         /**
@@ -52,15 +51,16 @@ public class ThreadedTransitions {
         /**
          * Fade in Method take two positional arguments From intensity to Intensity
          * **/
-        public void fadeIn(Integer from,Integer to){
+        public void fadeIn(Integer from,Integer to,Integer time){
             class FadeIn extends  Thread{
-
+                private Integer _time;
                 private Integer _from;
                 private Integer _to;
 
                 public FadeIn(Integer from, Integer to) {
                     this._from = from;
                     this._to = to;
+                    _time = time;
                 }
 
                 public void run(){
@@ -79,11 +79,12 @@ public class ThreadedTransitions {
 
 
         /** slide from right method **/
-        public void slideFromRight(){
+        public void slideFromRight(Integer time){
 
             class SlideFromRight extends Thread{
-
+                private Integer _time;
                 public void run(){
+                    _time = time;
                     // instantiates new Transition object
                     TranslateTransition transition = new TranslateTransition();
                     //take time from the parent class Transition
@@ -102,9 +103,11 @@ public class ThreadedTransitions {
         }
 
         /** slide from left method **/
-        public void slideFromLeft(){
+        public void slideFromLeft(Integer time){
             class SlideFromLeft extends Thread{
+                private Integer _time;
                 public void run(){
+                    _time = time;
                     TranslateTransition transition = new TranslateTransition();
                     transition.setDuration(Duration.millis(_time));
                     transition.setFromY(0);
