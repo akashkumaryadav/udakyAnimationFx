@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="udakyAnimationFx">
+    <output-path>$PROJECT_DIR$/out/artifacts/udakyAnimationFx</output-path>
+    <root id="archive" name="udakyAnimationFx.jar">
+      <element id="module-output" name="UdakyAnimationFx" />
+    </root>
+  </artifact>
+</component>

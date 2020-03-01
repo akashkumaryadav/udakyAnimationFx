@@ -1,5 +1,4 @@
 package com.udaky.animate;
-
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
@@ -28,10 +27,14 @@ public class ThreadedTransitions {
      * @createdBy  AkashKumarYadav copyright@2020
      */
 
-        private  Node _node;
-        private    Integer _time;
+        private   Node _node;
+        private   Integer _time;
 
 
+        public ThreadedTransitions(Node node,Integer duration){
+            this._node = node;
+            this._time = duration;
+        }
 
         /**
          * the following method is to provide a threaded animation which can run parallel
@@ -85,7 +88,7 @@ public class ThreadedTransitions {
                     TranslateTransition transition = new TranslateTransition();
                     //take time from the parent class Transition
                     transition.setDuration(Duration.millis(_time));
-                    transition.setFromX(_node.getLayoutX()+709);
+                    transition.setFromX(_node.getLayoutX()+_node.getScene().getWidth());
                     transition.setFromY(0);
                     transition.setToY(0);
                     transition.setToX(0);
@@ -105,7 +108,7 @@ public class ThreadedTransitions {
                     TranslateTransition transition = new TranslateTransition();
                     transition.setDuration(Duration.millis(_time));
                     transition.setFromY(0);
-                    transition.setFromX(-(_node.getLayoutX()+708));
+                    transition.setFromX(-(_node.getLayoutX()+_node.getScene().getWidth()));
                     transition.setToX(0);
                     transition.setToY(0);
                     transition.setNode(_node);
