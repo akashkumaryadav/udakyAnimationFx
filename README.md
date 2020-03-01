@@ -9,10 +9,10 @@
  
  1. **[Download the jar from here](https://drive.google.com/open?id=1tE2y7mv41Orjebcx3gH3tuWxk8yVxOU7)**
  2. **add to the library/class path of your project**
- 3. **import ThreadedTransitions**
+ 3. **import com.udaky.animate.ThreadedTransitions;**
  4. **run as eg. for fadein**
      1. ThreadedTransitions transition = new ThreadedTransition(Node:node);
-     2.transition.fadein(from:0,to:10,duration:millis);
+     2.transition.fadeIn(from:0,to:10,duration:millis);
   5. **Hurray**
   
   > **Note** You also need JavafX sdk to work this only for Javafx applications
