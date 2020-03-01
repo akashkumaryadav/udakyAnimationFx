@@ -5,6 +5,11 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
 import javafx.util.Duration;
 
+
+/***
+ * Base Class Takes Node and animation duration
+ * */
+
 public class ThreadedTransitions {
 
     /**
@@ -24,7 +29,7 @@ public class ThreadedTransitions {
      */
 
         private  Node _node;
-        private  Integer _time;
+        private    Integer _time;
 
 
 
@@ -41,10 +46,36 @@ public class ThreadedTransitions {
 
          * **/
 
+        /**
+         * Fade in Method take two positional arguments From intensity to Intensity
+         * **/
+        public void fadeIn(Integer from,Integer to){
+            class FadeIn extends  Thread{
+
+                private Integer _from;
+                private Integer _to;
+
+                public FadeIn(Integer from, Integer to) {
+                    this._from = from;
+                    this._to = to;
+                }
+
+                public void run(){
+                    FadeTransition transition = new FadeTransition();
+                    transition.setDuration(Duration.millis(_time));
+                    transition.setFromValue(_from);
+                    transition.setToValue(_to);
+                    transition.setNode(_node);
+                    transition.play();
+                }
+            }
+            FadeIn fadein = new FadeIn(from,to);
+            fadein.start();
+        }
 
 
 
-        /** slide from right function **/
+        /** slide from right method **/
         public void slideFromRight(){
 
             class SlideFromRight extends Thread{
@@ -66,6 +97,8 @@ public class ThreadedTransitions {
             SlideFromRight slidefromright = new SlideFromRight();
             slidefromright.start();
         }
+
+        /** slide from left method **/
         public void slideFromLeft(){
             class SlideFromLeft extends Thread{
                 public void run(){
