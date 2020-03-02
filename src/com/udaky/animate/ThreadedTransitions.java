@@ -123,6 +123,29 @@ public class ThreadedTransitions {
         }
 
 
+        /**slide from bottom**/
+        public void slideFromTop(Integer time){
+                class SlideFromTop extends Thread {
+                    private Integer _time;
+                    SlideFromTop(Integer time){
+                        _time = time;
+                    }
+                    public void run() {
+                        TranslateTransition transition = new TranslateTransition();
+                        transition.setDuration(Duration.millis(_time));
+                        transition.setFromX(0);
+                        transition.setFromY(-(_node.getLayoutY() + _node.getScene().getHeight()));
+                        transition.setToY(0);
+                        transition.setToX(0);
+                        transition.setNode(_node);
+                        transition.play();
+                    }
+                }
+            SlideFromTop slidefromtop = new SlideFromTop(time);
+            slidefromtop.start();
+        }
+
+
 }
 
 
